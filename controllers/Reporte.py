@@ -19,7 +19,7 @@ class Reporte():
 
     def create(body):
         data = (body['tipoArchivo'], body['archivoDir'], body['estado'], body['resultadoDir'], body['nombreReporte'], body['descripcionReporte'], body['personaEncargada'])
-        sql = "INSERT INTO reportes(tipo_archivo, archivo_dir, estado, resultado_dir, nombre_reporte, descripcion_reporte,persona_encargada) VALUES(%s, %s, %s, %s, %s, %s, %s)"
+        sql = "INSERT INTO reporte(tipo_archivo, archivo_dir, estado, resultado_dir, nombre_reporte, descripcion_reporte,persona_encargada) VALUES(%s, %s, %s, %s, %s, %s, %s)"
         cur.execute(sql,data)
         cnx.commit()
         return {'estado': 'Insertado'}, 200
@@ -27,14 +27,14 @@ class Reporte():
     
     def update(body):
         data = (body['personaEncargada'],body['idReporte'])
-        sql = "UPDATE reportes SET persona_encargada =%s WHERE id_reporte=%s"
+        sql = "UPDATE reporte SET persona_encargada =%s WHERE id_reporte=%s"
         cur.execute(sql,data)
         cnx.commit()
         return {'estado': 'Actualizado'}, 200
         cnx.close
 
     def delete(id_reporte):  
-        sql = "DELETE FROM reportes WHERE id_reporte=%s"
+        sql = "DELETE FROM reporte WHERE id_reporte=%s"
         ex = cur.execute(sql,(id_reporte,))
         cnx.commit()
         return {'estado': 'Eliminado'}, 200
