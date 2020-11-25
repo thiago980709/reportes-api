@@ -23,3 +23,5 @@ def putOne():
 def deleteOne(id_reporte):   
     return (Reporte.delete(id_reporte))
 
+if __name__ == '__main__':
+ app.run(host="0.0.0.0", port=config.PORT, debug=config.DEBUG_MODE)
